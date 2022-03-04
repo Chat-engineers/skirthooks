@@ -1,0 +1,47 @@
+@import url("@livechat/design-system/dist/design-system.css");
+@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@400;600&family=Source+Sans+Pro:wght@400;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+ 
+@layer components {
+  .text-header-3xl {
+    @apply text-3xl font-semibold leading-10 font-merriweather;
+  }
+
+  .text-header-2xl {
+    @apply text-2xl font-semibold leading-7 font-merriweather;
+  }
+
+  .text-header-xl {
+    @apply text-xl font-semibold leading-6 font-merriweather;
+  }
+
+  .text-header-lg {
+    @apply text-xl font-semibold leading-6 font-merriweather;
+  }
+
+  .text-header-md {
+    @apply text-lg font-semibold leading-6 font-merriweather;
+  }
+
+  .text-body {
+    @apply font-normal leading-6 font-source-sans;
+  }
+
+  .text-meta {
+    @apply text-sm font-normal leading-5 font-source-sans;
+  }
+  
+  .text-caption {
+    @apply text-xs font-normal leading-4 font-source-sans;
+  }
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
