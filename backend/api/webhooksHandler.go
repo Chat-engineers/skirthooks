@@ -13,13 +13,22 @@ func publishMqtt(mqttServer *server.Server) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		go func() {
 			data, _ := c.Value("data").(*gabs.Container)
+			event, err := gabs.ParseJSON(data.Bytes());
+
+			if err != nil {
+				fmt.Println("Error again", event, err)
+				return
+			}
+
+			event.Delete("secret_key")
 
 			organization := strconv.FormatFloat(data.Path("license_id").Data().(float64), 'f', 0, 64)
+
 			action := data.Path("action").Data().(string)
 
 			fmt.Println(organization, action)
 
-			mqttServer.Publish(organization+"/"+action, data.Bytes(), false)
+			mqttServer.Publish(organization+"/"+action, []byte(event.String()), false)
 		}()
 
 		c.Next()
