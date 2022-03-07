@@ -1,0 +1,7 @@
+site_name: Skirthooks
+theme: readthedocs
+nav:
+  - "index.md"
+  - "install.md"
+  - "usage.md"
+  - "privacy-policy.md"
