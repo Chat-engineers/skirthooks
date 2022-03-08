@@ -13,8 +13,10 @@ func publishMqtt(mqttServer *server.Server) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		go func() {
 			data, _ := c.Value("data").(*gabs.Container)
+			data.Delete("secret_key")
 
 			organization := strconv.FormatFloat(data.Path("license_id").Data().(float64), 'f', 0, 64)
+
 			action := data.Path("action").Data().(string)
 
 			fmt.Println(organization, action)
