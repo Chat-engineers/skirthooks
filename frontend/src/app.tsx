@@ -39,7 +39,7 @@ export function App() {
             readonly
             labelText="Connect URL"
             description="Use the above URI for mqtt libraries that support it"
-            value={`ws://${user.username}:${user.password}@${BROKER_URL}:1883`}
+            value={`mqtt://${user.username}:${user.password}@${BROKER_URL}:1883`}
           />
         </div>
 
@@ -49,7 +49,7 @@ export function App() {
             <InputField
               readonly
               labelText="Broker address"
-              description="Note: The broker uses v3, websocket mqtt protocol, listening on port 1883"
+              description="Note: The broker uses mqtt v3 protocol, listening on port 1883"
               value={BROKER_URL}
             />
           </div>
@@ -67,7 +67,7 @@ export function App() {
           readonly
           labelText="Using HiveMQ client"
           value={`
-          mqtt sub -V 3 -ws \\\n --host ${BROKER_URL} \\\n --port 1883 \\\n --topic ${user.username}/# \\\n --user ${user.username} \\\n --password ${user.password}
+          mqtt sub -V 3 \\\n --host ${BROKER_URL} \\\n --port 1883 \\\n --topic ${user.username}/# \\\n --user ${user.username} \\\n --password ${user.password}
           `.trim()}
           fieldClassName="font-monospace w-3/5 h-48"
         />
