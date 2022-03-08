@@ -35,7 +35,7 @@ func (a *Auth) ACL(user []byte, topic string, write bool) bool {
 func CreateMqtt(secret string) *m.Server {
 	server := m.New()
 
-	listener := listeners.NewWebsocket("ws1", ":1883")
+	listener := listeners.NewTCP("tcp1", ":1883")
 
 	auth := &Auth{
 		secret: secret,
