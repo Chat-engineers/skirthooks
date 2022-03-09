@@ -13,6 +13,7 @@ type Configuration struct {
 }
 
 func CreateServer(config *Configuration) *gin.Engine {
+	gin.SetMode(gin.ReleaseMode)
 	server := gin.Default()
 
 	corsConfig := cors.DefaultConfig()

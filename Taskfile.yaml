@@ -1,0 +1,26 @@
+# https://taskfile.dev
+
+version: "3"
+
+tasks:
+  build:
+    summary: |
+      Create a production build of the application. The final build
+      will embed the frontend app as well.
+    deps:
+      - frontend:build
+    dir: backend/
+    cmds:
+      - go build -tags=nomsgpack .
+      - mv ./webhooks ../artifacts/skirthooks
+
+  frontend:install_deps:
+    dir: frontend/
+    cmds:
+      - npm install
+  frontend:build:
+    deps:
+      - frontend:install_deps
+    dir: frontend/
+    cmds:
+      - npm run build
