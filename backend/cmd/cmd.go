@@ -13,8 +13,8 @@ func App() error {
 		Name: "Livechat webhooks",
 		Flags: []cli.Flag{
 			&cli.StringFlag{
-				Name:    "secret",
-				EnvVars: []string{"SECRET"},
+				Name:     "secret",
+				EnvVars:  []string{"SECRET"},
 				Required: true,
 			},
 		},
@@ -23,14 +23,14 @@ func App() error {
 
 			apiConfig := api.Configuration{
 				MqttServer: mqttServer,
-				Port:       3000,
+				Port:       "3000",
 				Secret:     c.String("secret"),
 			}
 
 			apiServer := api.CreateServer(&apiConfig)
 
 			go func() { mqttServer.Serve() }()
-			apiServer.Run()
+			apiServer.Run(":" + apiConfig.Port)
 
 			return nil
 		},
