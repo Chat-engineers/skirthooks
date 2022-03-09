@@ -1,20 +1,17 @@
 package api
 
 import (
-	"embed"
 	"net/http"
 	"path"
+	"webhooks/static"
 
 	"github.com/gin-gonic/gin"
 )
 
-//go:embed frontend_dist/*
-var assetsFS embed.FS
-
 func rootHandler(c *gin.Context) {
-	c.FileFromFS("frontend_dist/", http.FS(assetsFS))
+	c.FileFromFS("files/", http.FS(static.FS))
 }
 
 func assetsHandler(c *gin.Context) {
-	c.FileFromFS(path.Join("frontend_dist", c.Request.URL.Path), http.FS(assetsFS))
+	c.FileFromFS(path.Join("files", c.Request.URL.Path), http.FS(static.FS))
 }

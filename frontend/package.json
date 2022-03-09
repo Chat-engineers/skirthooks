@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --outDir=../backend/api/frontend_dist --emptyOutDir",
+    "build": "vite build --outDir=../backend/static/files --emptyOutDir",
     "preview": "vite preview"
   },
   "dependencies": {

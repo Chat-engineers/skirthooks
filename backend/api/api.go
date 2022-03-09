@@ -8,7 +8,7 @@ import (
 
 type Configuration struct {
 	Secret     string
-	Port       int
+	Port       string
 	MqttServer *server.Server
 }
 
