@@ -19,6 +19,7 @@ tasks:
     dir: frontend/
     cmds:
       - npm install
+
   frontend:build:
     deps:
       - frontend:install_deps
