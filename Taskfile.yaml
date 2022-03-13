@@ -12,7 +12,8 @@ tasks:
     dir: backend/
     cmds:
       - go build -tags=nomsgpack .
-      - mv ./webhooks ../artifacts/skirthooks
+      - mkdir -p ../artifacts
+      - mv webhooks ../artifacts/skirthooks
 
   frontend:install_deps:
     dir: frontend/
