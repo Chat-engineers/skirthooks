@@ -10,4 +10,4 @@ FROM alpine AS package
 EXPOSE 1883 3000
 WORKDIR /
 COPY --from=build /home/circleci/project/artifacts/skirthooks / 
-ENTRYPOINT [ "skirthooks" ] 
+ENTRYPOINT [ "/skirthooks" ] 
