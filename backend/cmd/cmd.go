@@ -31,8 +31,7 @@ func App() error {
 			apiServer := api.CreateServer(&apiConfig)
 
 			go func() { mqttServer.Serve() }()
-			log.Println("Running MQTT server: " + apiConfig.Port)
-			log.Println("Using secret: " + c.String("secret"))
+			log.Println("Running MQTT server localhost:" + apiConfig.Port)
 			apiServer.Run(":" + apiConfig.Port)
 
 			return nil
