@@ -16,7 +16,7 @@ const pending = atom(false);
 
 export const instance = new AccountsSDK({
   client_id: import.meta.env.VITE_CLIENT_ID as string,
-  redirect_uri: import.meta.env.VITE_REDIRECT_URL as string,
+  redirect_uri: window.document.location.href,
 });
 
 export const store = computed(
