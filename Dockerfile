@@ -13,4 +13,4 @@ WORKDIR /
 
 COPY --from=build /home/circleci/project/artifacts/skirthooks /
 
-ENTRYPOINT /skirthooks --secret $SECRET
+ENTRYPOINT /skirthooks
