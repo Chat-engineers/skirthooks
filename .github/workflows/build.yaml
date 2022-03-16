@@ -29,8 +29,8 @@ jobs:
         with:
           context: .
           push: true
-          build-args:
-            - VITE_CLIENT_ID
-            - VITE_BROKER_URL
+          build-args: |
+            VITE_CLIENT_ID=${{secrets.VITE_CLIENT_ID}}
+            VITE_BROKER_URL=${{secrets.VITE_BROKER_URL}}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
