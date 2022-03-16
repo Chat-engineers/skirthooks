@@ -6,7 +6,7 @@ ARG VITE_BROKER_URL
 ENV CGO_ENABLED=0
 ENV GOOS=linux
 
-ENV VITE_CLIENT_ID=${VITE_CLIENT_ID}}
+ENV VITE_CLIENT_ID=${VITE_CLIENT_ID}
 ENV VITE_BROKER_URL=${VITE_BROKER_URL}
 
 RUN wget -cO- https://github.com/go-task/task/releases/download/v3.11.0/task_linux_amd64.tar.gz | tar -xz
