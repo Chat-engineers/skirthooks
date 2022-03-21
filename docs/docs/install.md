@@ -4,8 +4,4 @@ Skirthooks is designed to be really easy to install. Open LiveChat's marketplace
 
 ## Permissions
 
-> WIP Explain why the permissions are required.
-
-## Accessing your credentials
-
-> WIP Explain how to reach setup and credentials page.
+Permissions to read and write webhooks are required for this application. This is nessecery because Skirthooks rely on LiveChat webhooks to provide the functionality advertised.
