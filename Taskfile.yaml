@@ -2,6 +2,8 @@
 
 version: "3"
 
+dotenv: ['.env', '{{.ENV}}/.env.', '{{.HOME}}/.env']
+
 tasks:
   build:
     summary: |
@@ -15,6 +17,12 @@ tasks:
       - mkdir -p ../artifacts
       - mv webhooks ../artifacts/skirthooks
 
+  dev:
+    deps:
+      - frontend:dev
+      - backend:dev
+    
+
   frontend:install_deps:
     dir: frontend/
     cmds:
@@ -26,3 +34,17 @@ tasks:
     dir: frontend/
     cmds:
       - npm run build
+
+  frontend:dev:
+    dir: frontend/
+    deps:
+      - frontend:install_deps
+    cmds:
+      - npm run dev
+
+  backend:dev:
+    dir: backend/
+    sources:
+      - backend/**/*.*
+    cmds:
+      - go run .
