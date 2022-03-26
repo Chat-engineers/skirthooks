@@ -13,10 +13,12 @@
     "@livechat/design-system-themes": "^1.0.0",
     "@nanostores/persistent": "^0.5.1",
     "@nanostores/react": "^0.1.5",
+    "clsx": "^1.1.1",
     "nanostores": "^0.5.10",
     "preact": "^10.5.15"
   },
   "devDependencies": {
+    "@honkhonk/vite-plugin-svgr": "^1.1.0",
     "@preact/preset-vite": "^2.1.5",
     "autoprefixer": "^10.4.2",
     "postcss": "^8.4.7",
