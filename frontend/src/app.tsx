@@ -48,14 +48,14 @@ export function App() {
           />
         </div>
 
-        <div className="lc-btn lc-btn--secondary w-full p-3 flex mb-10 flex-col">
+        <div className="flex flex-col w-full p-3 mb-10 border rounded-md border-gray-150 hover:border-blue-600 focus-within:border-blue-600">
           <button
             onClick={() => toggleSettings(!settingsVisible)}
             className="flex w-full"
           >
-            <div className="flex flex-row w-full items-center">
+            <div className="flex flex-row items-center w-full">
               <CogIcon className="w-6 h-6" />
-              <span className="cursor-pointer ml-2 flex-1 text-left">
+              <span className="flex-1 ml-2 text-left cursor-pointer">
                 Advanced settings
               </span>
 
