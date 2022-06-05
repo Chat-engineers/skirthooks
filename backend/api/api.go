@@ -22,7 +22,7 @@ func CreateServer(config *Configuration) *gin.Engine {
 
 	server.Use(cors.New(corsConfig))
 
-	server.POST("/webhooks", assignBody(), requireSecret(config.Secret), publishMqtt(config.MqttServer), webhooksHandler)
+	server.POST("/webhooks", assignBody(), requireSecretAndLicense(config.Secret), publishMqtt(config.MqttServer), webhooksHandler)
 	server.GET("/me", meHandler(config.Secret))
 	server.GET("/", rootHandler)
 	server.GET("/assets/*filepath", assetsHandler)

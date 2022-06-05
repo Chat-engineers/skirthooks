@@ -2,7 +2,6 @@ package api
 
 import (
 	"fmt"
-	"strconv"
 
 	"github.com/Jeffail/gabs/v2"
 	"github.com/gin-gonic/gin"
@@ -15,9 +14,8 @@ func publishMqtt(mqttServer *server.Server) gin.HandlerFunc {
 			data, _ := c.Value("data").(*gabs.Container)
 			data.Delete("secret_key")
 
-			organization := strconv.FormatFloat(data.Path("license_id").Data().(float64), 'f', 0, 64)
-
-			action := data.Path("action").Data().(string)
+			organization := data.Path("license_id").String()
+			action := data.Path("action").String()
 
 			fmt.Println(organization, action)
 
@@ -47,12 +45,26 @@ func assignBody() gin.HandlerFunc {
 	}
 }
 
-func requireSecret(secret string) gin.HandlerFunc {
+func requireSecretAndLicense(secret string) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		data, _ := c.Value("data").(*gabs.Container)
 
 		if webhookSecret := data.Path("secret_key").Data(); webhookSecret != secret {
-			c.String(400, "Could not parse body")
+			c.String(400, "Secret is incorrect")
+			c.Abort()
+
+			return
+		}
+
+		if !data.ExistsP("license_id") {
+			c.String(400, "License is unavailable")
+			c.Abort()
+
+			return
+		}
+
+		if !data.ExistsP("action") {
+			c.String(400, "Action is unavailable")
 			c.Abort()
 
 			return
