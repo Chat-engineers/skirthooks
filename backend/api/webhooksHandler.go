@@ -15,7 +15,7 @@ func publishMqtt(mqttServer *server.Server) gin.HandlerFunc {
 			data.Delete("secret_key")
 
 			organization := data.Path("license_id").String()
-			action := data.Path("action").String()
+			action := data.Path("action").Data().(string)
 
 			fmt.Println(organization, action)
 
